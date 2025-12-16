@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamirabel - Premium Lingerie Collection | Moonwhite DXB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #f4e6e7;
+            --secondary-pink: #e8d5d7;
+            --accent-rose: #d4a5a8;
+            --cream: #faf8f6;
+            --soft-white: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-light: #6b6b6b;
+            --gold-accent: #d4af37;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-hover: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--soft-white);
+            box-shadow: 0 2px 15px var(--shadow-light);
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-rose);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent-rose);
+        }
+
+        .cart-info {
+            background: var(--accent-rose);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: var(--soft-white);
+            padding: 1.5rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            border-radius: 15px;
+        }
+
+        .category-scroll {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 1rem;
+            min-width: max-content;
+            padding: 0 1rem;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: 2px solid var(--secondary-pink);
+            color: var(--text-dark);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .category-btn:hover {
+            background: var(--secondary-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+
+        .category-btn.active {
+            background: var(--accent-rose);
+            border-color: var(--accent-rose);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow-medium);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 2rem 0 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--soft-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px var(--shadow-medium);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-image.back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .product-card:hover .product-image.front {
+            opacity: 0;
+        }
+
+        .product-card:hover .product-image.back {
+            opacity: 1;
+        }
+
+        .add-to-cart-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--accent-rose);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px var(--shadow-medium);
+        }
+
+        .product-card:hover .add-to-cart-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--text-dark);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px var(--shadow-hover);
+        }
+
+        .product-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-rose);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border: 3px solid var(--secondary-pink);
+            border-top: 3px solid var(--accent-rose);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-pink);
+        }
+
+        .footer-brand p {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-pink);
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 1rem;
+        }
+
+        .developer-credit {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+
+        .developer-credit a {
+            color: var(--accent-rose);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .developer-credit a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* Cart notification */
+        .cart-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-rose);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-medium);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            font-weight: 500;
+        }
+
+        .cart-notification.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .product-image-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .product-image-container {
+                height: 280px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .category-buttons {
+                padding: 0 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image-container {
+                height: 350px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+        }
+
+.product-image-container {
+    position: relative;
+}
+
+/* Hidden by default */
+.color-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Each color dot */
+.color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Show on hover */
+.product-card:hover .color-container {
+    opacity: 1;
+}
+
+
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 150px;
+            /* adjust as needed */
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+    <a href="index.html" class="logo">
+                    <img src="Images/Logos/log.png" alt="La Mirabel Logo" />
+                </a>
+    <nav>
+        <ul class="header-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="product.html" class="active">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="cart.html">
+                    🛒 <span id="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+        </div>
+    </header>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="container">
+            <div class="category-scroll">
+                <div class="category-buttons">
+    <button class="category-btn active" data-category="top-selling">Top Selling</button>
+    <button class="category-btn" data-category="new-arrivals">New Arrivals</button>
+    <button class="category-btn" data-category="offer-zone">Offer Zone</button>
+
+    <button class="category-btn" data-category="Bra">Bra</button>
+    <button class="category-btn" data-category="Moon Bra">Moon Bra</button>
+    <button class="category-btn" data-category="Underpants">Underpants</button>
+    <button class="category-btn" data-category="Moon Underpants">Moon Underpants</button>
+    <button class="category-btn" data-category="Kids">Kids</button>
+    <button class="category-btn" data-category="Vest">Vest</button>
+    <button class="category-btn" data-category="Underwear Set">Underwear Set</button>
+    <button class="category-btn" data-category="Sport Underwear">Sport Underwear</button>
+</div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <main class="products-section">
+        <div class="container">
+            <h1 class="section-title" id="category-title">Top Selling</h1>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cart-notification">
+        Product added to cart!
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Lamirabel</h3>
+                    <p>Premium lingerie and innerwear celebrating the beauty and strength of every woman. Part of the Moonwhite DXB legacy of excellence.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#size-guide">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Lamirabel - Moonwhite DXB. All rights reserved.</p>
+                <div class="developer-credit">
+                    <p>Developed by <a href="https://sreyas.tech" target="_blank">Sreyas</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // =========================
+    // Master product list
+    // =========================
+    const allProducts = [
+        // Bra (with Mirabel codes)
+        { id: 'LM1501', name: 'LM 1501 - Bra', price: '₹0', category: 'Bra', chinaCode: '312', lamirabelCode: 'LM1501', frontImage: 'Images/products/LM1501/01.jpeg', backImage: 'Images/products/LM1501/01-a.jpeg', colors: ['#f5c6d6', '#c39bd3', '#34495e'] },
+        { id: 'LM1502', name: 'LM 1502 - Bra', price: '₹0', category: 'Bra', chinaCode: '8059', lamirabelCode: 'LM1502', frontImage: 'Images/products/LM1502/01.jpg', backImage: 'Images/products/LM1502/02.jpg' },
+        { id: 'LM1503', name: 'LM 1503 - Bra', price: '₹0', category: 'Bra', chinaCode: '717', lamirabelCode: 'LM1503', frontImage: 'Images/products/LM1503/01.jpg', backImage: 'Images/products/LM1503/02.jpg' },
+        { id: 'LM1504', name: 'LM 1504 - Bra', price: '₹0', category: 'Bra', chinaCode: 'A25', lamirabelCode: 'LM1504', frontImage: 'Images/products/LM1504/01.jpg', backImage: 'Images/products/LM1504/02.jpg' },
+        { id: 'LM1505', name: 'LM 1505 - Bra', price: '₹0', category: 'Bra', chinaCode: 'YS002', lamirabelCode: 'LM1505', frontImage: 'Images/products/LM1505/01.jpg', backImage: 'Images/products/LM1505/02.jpg' },
+        { id: 'LM1506', name: 'LM 1506 - Bra', price: '₹0', category: 'Bra', chinaCode: '719', lamirabelCode: 'LM1506', frontImage: 'Images/products/LM1506/01.jpg', backImage: 'Images/products/LM1506/02.jpg' },
+        { id: 'LM1507', name: 'LM 1507 - Bra', price: '₹0', category: 'Bra', chinaCode: 'Y132', lamirabelCode: 'LM1507', frontImage: 'Images/products/LM1507/01.jpg', backImage: 'Images/products/LM1507/02.jpg' },
+        { id: 'LM1508', name: 'LM 1508 - Bra', price: '₹0', category: 'Bra', chinaCode: 'Y003', lamirabelCode: 'LM1508', frontImage: 'Images/products/LM1508/01.jpg', backImage: 'Images/products/LM1508/02.jpg' },
+        { id: 'LM1509', name: 'LM 1509 - Bra', price: '₹0', category: 'Bra', chinaCode: '3309', lamirabelCode: 'LM1509', frontImage: 'Images/products/LM1509/01.jpg', backImage: 'Images/products/LM1509/02.jpg' },
+        { id: 'LM1510', name: 'LM 1510 - Bra', price: '₹0', category: 'Bra', chinaCode: '3179', lamirabelCode: 'LM1510', frontImage: 'Images/products/LM1510/01.jpg', backImage: 'Images/products/LM1510/02.jpg' },
+        { id: 'LM1511', name: 'LM 1511 - Bra', price: '₹0', category: 'Bra', chinaCode: '2147', lamirabelCode: 'LM1511', frontImage: 'Images/products/LM1511/01.jpg', backImage: 'Images/products/LM1511/02.jpg' },
+        { id: 'LM1512', name: 'LM 1512 - Bra', price: '₹0', category: 'Bra', chinaCode: 'A215', lamirabelCode: 'LM1512', frontImage: 'Images/products/LM1512/01.jpg', backImage: 'Images/products/LM1512/02.jpg' },
+        { id: 'LM1513', name: 'LM 1513 - Bra', price: '₹0', category: 'Bra', chinaCode: 'A35', lamirabelCode: 'LM1513', frontImage: 'Images/products/LM1513/01.jpg', backImage: 'Images/products/LM1513/02.jpg' },
+        { id: 'LM1514', name: 'LM 1514 - Bra', price: '₹0', category: 'Bra', chinaCode: 'MM25', lamirabelCode: 'LM1514', frontImage: 'Images/products/LM1514/01.jpg', backImage: 'Images/products/LM1514/02.jpg' },
+        { id: 'LM1515', name: 'LM 1515 - Bra', price: '₹0', category: 'Bra', chinaCode: 'YC140', lamirabelCode: 'LM1515', frontImage: 'Images/products/LM1515/01.jpg', backImage: 'Images/products/LM1515/02.jpg' },
+        { id: 'LM1516', name: 'LM 1516 - Bra', price: '₹0', category: 'Bra', chinaCode: 'B807', lamirabelCode: 'LM1516', frontImage: 'Images/products/LM1516/01.jpg', backImage: 'Images/products/LM1516/02.jpg' },
+        { id: 'LM1517', name: 'LM 1517 - Bra', price: '₹0', category: 'Bra', chinaCode: 'B902', lamirabelCode: 'LM1517', frontImage: 'Images/products/LM1517/01.jpg', backImage: 'Images/products/LM1517/02.jpg' },
+        { id: 'LM1518', name: 'LM 1518 - Bra', price: '₹0', category: 'Bra', chinaCode: 'Y1118', lamirabelCode: 'LM1518', frontImage: 'Images/products/LM1518/01.jpg', backImage: 'Images/products/LM1518/02.jpg' },
+        { id: 'LM1519', name: 'LM 1519 - Bra', price: '₹0', category: 'Bra', chinaCode: 'B808', lamirabelCode: 'LM1519', frontImage: 'Images/products/LM1519/01.jpg', backImage: 'Images/products/LM1519/02.jpg' },
+        { id: 'LM1520', name: 'LM 1520 - Bra', price: '₹0', category: 'Bra', chinaCode: '1602', lamirabelCode: 'LM1520', frontImage: 'Images/products/LM1520/01.jpg', backImage: 'Images/products/LM1520/02.jpg' },
+        { id: 'LM1521', name: 'LM 1521 - Bra', price: '₹0', category: 'Bra', chinaCode: 'A23', lamirabelCode: 'LM1521', frontImage: 'Images/products/LM1521/01.jpg', backImage: 'Images/products/LM1521/02.jpg' },
+        { id: 'LM1522', name: 'LM 1522 - Bra', price: '₹0', category: 'Bra', chinaCode: 'A205', lamirabelCode: 'LM1522', frontImage: 'Images/products/LM1522/01.jpg', backImage: 'Images/products/LM1522/02.jpg' },
+        { id: 'LM1523', name: 'LM 1523 - Bra', price: '₹0', category: 'Bra', chinaCode: 'B3831', lamirabelCode: 'LM1523', frontImage: 'Images/products/LM1523/01.jpg', backImage: 'Images/products/LM1523/02.jpg' },
+        { id: 'LM1524', name: 'LM 1524 - Bra', price: '₹0', category: 'Bra', chinaCode: 'YC161', lamirabelCode: 'LM1524', frontImage: 'Images/products/LM1524/01.jpg', backImage: 'Images/products/LM1524/02.jpg' },
+        { id: 'LM1525', name: 'LM 1525 - Bra', price: '₹0', category: 'Bra', chinaCode: '2513', lamirabelCode: 'LM1525', frontImage: 'Images/products/LM1525/01.jpg', backImage: 'Images/products/LM1525/02.jpg' },
+        { id: 'LM1526', name: 'LM 1526 - Bra', price: '₹0', category: 'Bra', chinaCode: '638', lamirabelCode: 'LM1526', frontImage: 'Images/products/LM1526/01.jpg', backImage: 'Images/products/LM1526/02.jpg' },
+        { id: 'LM1527', name: 'LM 1527 - Bra', price: '₹0', category: 'Bra', chinaCode: 'MM38', lamirabelCode: 'LM1527', frontImage: 'Images/products/LM1527/01.jpg', backImage: 'Images/products/LM1527/02.jpg' },
+
+        // Bra (no Mirabel code → "no M Code")
+        { id: '2064', name: '2064 - Bra', price: '₹0', category: 'Bra', chinaCode: '2064', lamirabelCode: 'no M Code', frontImage: 'Images/products/2064/01.jpg', backImage: 'Images/products/2064/02.jpg' },
+        { id: '2916', name: '2916美背 - Bra', price: '₹0', category: 'Bra', chinaCode: '2916美背', lamirabelCode: 'no M Code', frontImage: 'Images/products/2916/01.jpg', backImage: 'Images/products/2916/02.jpg' },
+        { id: 'B805', name: 'B805 - Bra', price: '₹0', category: 'Bra', chinaCode: 'B805', lamirabelCode: 'no M Code', frontImage: 'Images/products/B805/01.jpg', backImage: 'Images/products/B805/02.jpg' },
+        { id: 'Y910', name: 'Y910 - Bra', price: '₹0', category: 'Bra', chinaCode: 'Y910', lamirabelCode: 'no M Code', frontImage: 'Images/products/Y910/01.jpg', backImage: 'Images/products/Y910/02.jpg' },
+        { id: 'B8871', name: 'B8871 - Bra', price: '₹0', category: 'Bra', chinaCode: 'B8871', lamirabelCode: 'no M Code', frontImage: 'Images/products/B8871/01.jpg', backImage: 'Images/products/B8871/02.jpg' },
+        { id: '502', name: '502 - Bra', price: '₹0', category: 'Bra', chinaCode: '502', lamirabelCode: 'no M Code', frontImage: 'Images/products/502/01.jpg', backImage: 'Images/products/502/02.jpg' },
+        { id: 'F2', name: 'F2 - Bra', price: '₹0', category: 'Bra', chinaCode: 'F2', lamirabelCode: 'no M Code', frontImage: 'Images/products/F2/01.jpg', backImage: 'Images/products/F2/02.jpg' },
+        { id: 'YSCG052', name: 'YS-CG052 - Bra', price: '₹0', category: 'Bra', chinaCode: 'YS-CG052', lamirabelCode: 'no M Code', frontImage: 'Images/products/YSCG052/01.jpg', backImage: 'Images/products/YSCG052/02.jpg' },
+
+        // Moon Bra
+        { id: 'A3066', name: 'A3066 - Moon Bra', price: '₹0', category: 'Moon Bra', chinaCode: 'A3066', lamirabelCode: 'no M Code', frontImage: 'Images/products/A3066/01.jpg', backImage: 'Images/products/A3066/02.jpg' },
+        { id: 'A3067', name: 'A3067 - Moon Bra', price: '₹0', category: 'Moon Bra', chinaCode: 'A3067', lamirabelCode: 'no M Code', frontImage: 'Images/products/A3067/01.jpg', backImage: 'Images/products/A3067/02.jpg' },
+
+        // Underpants
+        { id: '8852', name: '8852 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '8852', lamirabelCode: 'no M Code', frontImage: 'Images/products/8852/01.jpg', backImage: 'Images/products/8852/02.jpeg' },
+        { id: '8850', name: '8850 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '8850', lamirabelCode: 'no M Code', frontImage: 'Images/products/8850/01.jpg', backImage: 'Images/products/8850/02.jpeg' },
+        { id: '3509', name: '3509 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '3509', lamirabelCode: 'no M Code', frontImage: 'Images/products/3509/01.jpg', backImage: 'Images/products/3509/02.jpg' },
+        { id: '3527', name: '3527 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '3527', lamirabelCode: 'no M Code', frontImage: 'Images/products/3527/01.jpg', backImage: 'Images/products/3527/02.jpg' },
+        { id: '3557', name: '3557 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '3557', lamirabelCode: 'no M Code', frontImage: 'Images/products/3557/01.jpg', backImage: 'Images/products/3557/02.jpg' },
+        { id: '3556', name: '3556 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '3556', lamirabelCode: 'no M Code', frontImage: 'Images/products/3556/01.jpg', backImage: 'Images/products/3556/02.jpg' },
+        { id: '9822', name: '9822内裤 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '9822内裤', lamirabelCode: 'no M Code', frontImage: 'Images/products/9822/01.jpg', backImage: 'Images/products/9822/02.jpg' },
+        { id: '2515', name: '2515内裤 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '2515内裤', lamirabelCode: 'no M Code', frontImage: 'Images/products/2515/01.jpg', backImage: 'Images/products/2515/02.jpg' },
+        { id: 'K631', name: 'K631内裤 - Underpants', price: '₹0', category: 'Underpants', chinaCode: 'K631内裤', lamirabelCode: 'no M Code', frontImage: 'Images/products/K631/01.jpg', backImage: 'Images/products/K631/02.jpg' },
+        { id: '281', name: '281内裤 - Underpants', price: '₹0', category: 'Underpants', chinaCode: '281内裤', lamirabelCode: 'no M Code', frontImage: 'Images/products/281/01.png', backImage: 'Images/products/281/02.png' },
+        { id: 'YS46', name: 'YS46内裤 - Underpants', price: '₹0', category: 'Underpants', chinaCode: 'YS46内裤', lamirabelCode: 'no M Code', frontImage: 'Images/products/YS46/01.jpg', backImage: 'Images/products/YS46/02.jpg' },
+
+        // Moon Underpants
+        { id: 'LW466', name: 'LW466 - Moon Underpants', price: '₹0', category: 'Moon Underpants', chinaCode: 'LW466', lamirabelCode: 'no M Code', frontImage: 'Images/products/LW466/01.jpg', backImage: 'Images/products/LW466/02.jpg' },
+
+        // Kids (with Mirabel codes)
+        { id: 'LM5501', name: 'LM 5501 - Kids', price: '₹0', category: 'Kids', chinaCode: '6856少女', lamirabelCode: 'LM5501', frontImage: 'Images/products/LM5501/01.jpg', backImage: 'Images/products/LM5501/02.jpg' },
+        { id: 'LM5502', name: 'LM 5502 - Kids', price: '₹0', category: 'Kids', chinaCode: 'SY338少女', lamirabelCode: 'LM5502', frontImage: 'Images/products/LM5502/01.jpg', backImage: 'Images/products/LM5502/02.jpg' },
+        { id: 'LM5503', name: 'LM 5503 - Kids', price: '₹0', category: 'Kids', chinaCode: '8830少女', lamirabelCode: 'LM5503', frontImage: 'Images/products/LM5503/01.jpg', backImage: 'Images/products/LM5503/02.jpg' },
+        { id: 'LM5504', name: 'LM 5504 - Kids', price: '₹0', category: 'Kids', chinaCode: 'SG6857', lamirabelCode: 'LM5504', frontImage: 'Images/products/LM5504/01.jpg', backImage: 'Images/products/LM5504/02.jpg' },
+        { id: 'LM5505', name: 'LM 5505 - Kids', price: '₹0', category: 'Kids', chinaCode: 'SG6833', lamirabelCode: 'LM5505', frontImage: 'Images/products/LM5505/01.jpg', backImage: 'Images/products/LM5505/02.jpg' },
+
+        // Vest (no Mirabel code)
+        { id: '5218', name: '5218 - Vest', price: '₹0', category: 'Vest', chinaCode: '5218', lamirabelCode: 'no M Code', frontImage: 'Images/products/5218/01.jpeg', backImage: 'Images/products/5218/02.jpg' },
+        { id: '5011', name: '5011 - Vest', price: '₹0', category: 'Vest', chinaCode: '5011', lamirabelCode: 'no M Code', frontImage: 'Images/products/5011/01.jpg', backImage: 'Images/products/5011/02.jpg' },
+        { id: '9231', name: '9231 - Vest', price: '₹0', category: 'Vest', chinaCode: '9231', lamirabelCode: 'no M Code', frontImage: 'Images/products/9231/01.jpg', backImage: 'Images/products/9231/02.jpg' },
+        { id: 'YS003', name: 'YS003 - Vest', price: '₹0', category: 'Vest', chinaCode: 'YS003', lamirabelCode: 'no M Code', frontImage: 'Images/products/YS003/01.jpg', backImage: 'Images/products/YS003/02.jpg' },
+        { id: 'B903', name: 'B903 - Vest', price: '₹0', category: 'Vest', chinaCode: 'B903', lamirabelCode: 'no M Code', frontImage: 'Images/products/B903/01.jpg', backImage: 'Images/products/B903/02.jpg' },
+        { id: '2503', name: '2503 - Vest', price: '₹0', category: 'Vest', chinaCode: '2503', lamirabelCode: 'no M Code', frontImage: 'Images/products/2503/01.jpg', backImage: 'Images/products/2503/02.jpg' },
+        { id: '2255', name: '2255 - Vest', price: '₹0', category: 'Vest', chinaCode: '2255', lamirabelCode: 'no M Code', frontImage: 'Images/products/2255/01.jpg', backImage: 'Images/products/2255/02.jpg' },
+        { id: 'BY6118', name: 'BY6118 - Vest', price: '₹0', category: 'Vest', chinaCode: 'BY6118', lamirabelCode: 'no M Code', frontImage: 'Images/products/BY6118/01.jpg', backImage: 'Images/products/BY6118/02.jpg' },
+        { id: 'BY6117', name: 'BY6117 - Vest', price: '₹0', category: 'Vest', chinaCode: 'BY6117', lamirabelCode: 'no M Code', frontImage: 'Images/products/BY6117/01.jpg', backImage: 'Images/products/BY6117/02.jpg' },
+
+        // Underwear Set
+        { id: 'C6626', name: 'C6626套装 - Underwear Set', price: '₹0', category: 'Underwear Set', chinaCode: 'C6626套装', lamirabelCode: 'no M Code', frontImage: 'Images/products/C6626/01.jpg', backImage: 'Images/products/C6626/02.jpeg' },
+        { id: 'C6617', name: 'C6617套装 - Underwear Set', price: '₹0', category: 'Underwear Set', chinaCode: 'C6617套装', lamirabelCode: 'no M Code', frontImage: 'Images/products/C6617/01.jpg', backImage: 'Images/products/C6617/02.jpeg' },
+
+        // Sport Underwear
+        { id: '77323', name: '77323 - Sport Underwear', price: '₹0', category: 'Sport Underwear', chinaCode: '77323', lamirabelCode: 'no M Code', frontImage: 'Images/products/77323/01.jpg', backImage: 'Images/products/77323/02.jpg' },
+        { id: '77389', name: '77389 - Sport Underwear', price: '₹0', category: 'Sport Underwear', chinaCode: '77389', lamirabelCode: 'no M Code', frontImage: 'Images/products/77389/01.jpg', backImage: 'Images/products/77389/02.jpg' }
+    ];
+
+    // =========================
+    // Special lists (Mirabel-only)
+    // =========================
+    // Only products that actually have a Mirabel code (no "no M Code" here)
+    const topSellingIds = [
+        'LM1501', 'LM1502', 'LM1503', 'LM1504',
+        'LM1505', 'LM1506', 'LM1507', 'LM1508',
+        'LM1509', 'LM1510', 'LM5501', 'LM5502'
+    ];
+
+    const newArrivalsIds = [
+        'LM1519', 'LM1520', 'LM1521', 'LM1522',
+        'LM1523', 'LM1524', 'LM1525', 'LM1526',
+        'LM1527', 'LM5503', 'LM5504', 'LM5505'
+    ];
+
+    const offerIds = [
+        'LM1511', 'LM1512', 'LM1513', 'LM1514',
+        'LM1515', 'LM1516', 'LM1517', 'LM1518'
+    ];
+
+    // =========================
+    // Category titles mapping
+    // =========================
+    const categoryTitles = {
+        'top-selling': 'Top Selling',
+        'new-arrivals': 'New Arrivals',
+        'offer-zone': 'Offer',
+        'Bra': 'Bra',
+        'Moon Bra': 'Moon Bra',
+        'Underpants': 'Underpants',
+        'Moon Underpants': 'Moon Underpants',
+        'Kids': 'Kids',
+        'Vest': 'Vest',
+        'Underwear Set': 'Underwear Set',
+        'Sport Underwear': 'Sport Underwear'
+    };
+
+    // =========================
+    // DOM elements
+    // =========================
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const productsGrid = document.getElementById('products-grid');
+    const categoryTitle = document.getElementById('category-title');
+    const cartNotification = document.getElementById('cart-notification');
+    const cartCount = document.getElementById('cart-count');
+
+    const categoryScroll = document.querySelector('.category-scroll');
+    let isScrolling = false;
+
+    // =========================
+    // Helpers: get products for a category
+    // =========================
+    function getProductById(id) {
+        return allProducts.find(p => p.id === id);
+    }
+
+    function getProductsForCategory(category) {
+        if (category === 'top-selling') {
+            return topSellingIds.map(getProductById).filter(Boolean);
+        }
+
+        if (category === 'new-arrivals') {
+            return newArrivalsIds.map(getProductById).filter(Boolean);
+        }
+
+        if (category === 'offer-zone') {
+            return offerIds.map(getProductById).filter(Boolean);
+        }
+
+        // Regular categories (Bra, Moon Bra, etc.)
+        return allProducts.filter(p => p.category === category);
+    }
+
+    // =========================
+    // Initialization
+    // =========================
+    document.addEventListener('DOMContentLoaded', function () {
+        loadProducts('top-selling');
+        updateCartCount();
+    });
+
+    // =========================
+    // Category button handlers
+    // =========================
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const category = this.getAttribute('data-category');
+
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            loadProducts(category);
+
+            if (window.innerWidth <= 768) {
+                this.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        });
+    });
+
+    // =========================
+    // Load products
+    // =========================
+    function loadProducts(category) {
+        productsGrid.innerHTML = '<div class="loading">Loading products...</div>';
+
+        categoryTitle.textContent = categoryTitles[category];
+
+        setTimeout(() => {
+            const products = getProductsForCategory(category);
+            renderProducts(products);
+        }, 300);
+    }
+
+    // =========================
+    // Render products
+    // =========================
+    function renderProducts(products) {
+    if (products.length === 0) {
+        productsGrid.innerHTML = '<div class="loading">No products available in this category.</div>';
+        return;
+    }
+
+    const productsHTML = products
+        .map(product => {
+            // 1) Name = Chinese code + product category
+            const chinaCode = product.chinaCode || '';
+            const categoryLabel = product.category || '';
+            const mainName = chinaCode && categoryLabel
+                ? `${chinaCode} - ${categoryLabel}`
+                : product.name || '';
+
+            // 2) Lamirabel code (can be "no M Code")
+            const lamirabelCode = product.lamirabelCode || 'no M Code';
+
+            // 3) Colors – default R, G, B for now
+            const colors = product.colors || ['#ff0000', '#00ff00', '#0000ff'];
+
+            const colorDots = colors
+                .map(c => `<span class="color-dot" style="background:${c};"></span>`)
+                .join('');
+
+            return `
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="${product.frontImage}" alt="${mainName}" class="product-image front">
+                        <img src="${product.backImage}" alt="${mainName} back view" class="product-image back">
+
+                        <!-- Color circles on hover -->
+                        <div class="color-container">
+                            ${colorDots}
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <!-- 1. Chinese code + product category -->
+                        <h3 class="product-name">${mainName}</h3>
+
+                        <!-- 2. Lamirabel code -->
+                        <p class="product-code">Lamirabel Code: ${lamirabelCode}</p>
+
+                        <!-- 3. Price -->
+                        <p class="product-price">${product.price}</p>
+                    </div>
+                </div>
+            `;
+        })
+        .join('');
+
+    productsGrid.innerHTML = productsHTML;
+}
+
+
+    // =========================
+    // Cart functions
+    // =========================
+    function addToCart(productId, productName, productPrice) {
+        let cart = JSON.parse(localStorage.getItem('lamirabellCart')) || [];
+
+        const existingProduct = cart.find(item => item.id === productId);
+
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({
+                id: productId,
+                name: productName,
+                price: productPrice,
+                quantity: 1
+            });
+        }
+
+        localStorage.setItem('lamirabellCart', JSON.stringify(cart));
+
+        showCartNotification(productName);
+        updateCartCount();
+    }
+
+    function showCartNotification(productName) {
+        cartNotification.textContent = `${productName} added to cart!`;
+        cartNotification.classList.add('show');
+
+        setTimeout(() => {
+            cartNotification.classList.remove('show');
+        }, 3000);
+    }
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('lamirabellCart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
+</script>
+
+
+
+</body>
+</html>

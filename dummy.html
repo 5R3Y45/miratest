@@ -1,0 +1,254 @@
+<script>
+    // Product data for different categories
+    const productData = {
+        'top-selling': [
+            {
+                id: 'ts1',
+                name: 'Silk Elegance Bra',
+                price: '₹2,899',
+                frontImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            },
+            {
+                id: 'ts2',
+                name: 'Rose Lace Set',
+                price: '₹2,299',
+                frontImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'bra': [
+            {
+                id: 'b1',
+                name: 'Push-Up Perfection',
+                price: '₹2,199',
+                frontImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'panty': [
+            {
+                id: 'p1',
+                name: 'Seamless Comfort',
+                price: '₹899',
+                frontImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'slips-tights': [
+            {
+                id: 'st1',
+                name: 'Silk Slip Dress',
+                price: '₹2,799',
+                frontImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'loungewear': [
+            {
+                id: 'l1',
+                name: 'Cozy Pajama Set',
+                price: '₹3,199',
+                frontImage: 'https://images.unsplash.com/photo-1583846112692-e4c9e8d8e8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'beginners': [
+            {
+                id: 'bg1',
+                name: 'First Bra Essentials',
+                price: '₹1,399',
+                frontImage: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1583846112692-e4c9e8d8e8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'junior': [
+            {
+                id: 'j1',
+                name: 'Teen Comfort Bra',
+                price: '₹1,199',
+                frontImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'tank-top': [
+            {
+                id: 't1',
+                name: 'Seamless Tank',
+                price: '₹1,099',
+                frontImage: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1583846112692-e4c9e8d8e8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'accessories': [
+            {
+                id: 'a1',
+                name: 'Silk Hair Scrunchie',
+                price: '₹499',
+                frontImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'new-arrivals': [
+            {
+                id: 'na1',
+                name: 'Latest Lace Design',
+                price: '₹2,999',
+                frontImage: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1583846112692-e4c9e8d8e8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ],
+        'offer-zone': [
+            {
+                id: 'oz1',
+                name: 'Discounted Elegance',
+                price: '₹1,499',
+                frontImage: 'https://images.unsplash.com/photo-1571513722275-4b8c2fd2723b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                backImage: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            }
+        ]
+    };
+
+    // Category titles mapping
+    const categoryTitles = {
+        'top-selling': 'Top Selling',
+        'bra': 'Bra Collection',
+        'panty': 'Panty Collection',
+        'slips-tights': 'Slips & Tights',
+        'loungewear': 'LoungeWear',
+        'beginners': "Beginner's Collection",
+        'junior': 'Junior Collection',
+        'tank-top': 'Tank Top',
+        'accessories': 'Accessories',
+        'new-arrivals': 'New Arrivals',
+        'offer-zone': 'Offer Zone'
+    };
+
+    // DOM elements
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const productsGrid = document.getElementById('products-grid');
+    const categoryTitle = document.getElementById('category-title');
+    const cartNotification = document.getElementById('cart-notification');
+    const cartCount = document.getElementById('cart-count');
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function () {
+        loadProducts('top-selling');
+        updateCartCount();
+    });
+
+    // Category button event listeners
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const category = this.getAttribute('data-category');
+
+            // Update active button
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // Load products for selected category
+            loadProducts(category);
+        });
+    });
+
+    // Load products function
+    function loadProducts(category) {
+        // Show loading state
+        productsGrid.innerHTML = '<div class="loading">Loading products...</div>';
+
+        // Update title
+        categoryTitle.textContent = categoryTitles[category];
+
+        // Simulate loading delay for better UX
+        setTimeout(() => {
+            const products = productData[category] || [];
+            renderProducts(products);
+        }, 300);
+    }
+
+    // Render products function
+    function renderProducts(products) {
+        if (products.length === 0) {
+            productsGrid.innerHTML = '<div class="loading">No products available in this category.</div>';
+            return;
+        }
+
+        const productsHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="${product.frontImage}" alt="${product.name}" class="product-image front">
+                        <img src="${product.backImage}" alt="${product.name} back view" class="product-image back">
+                        <button class="add-to-cart-btn" onclick="addToCart('${product.id}', '${product.name}', '${product.price}')">+</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                    </div>
+                </div>
+            `).join('');
+
+        productsGrid.innerHTML = productsHTML;
+    }
+
+    // Add to cart function
+    function addToCart(productId, productName, productPrice) {
+        // Get existing cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('lamirabellCart')) || [];
+
+        // Check if product already exists in cart
+        const existingProduct = cart.find(item => item.id === productId);
+
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({
+                id: productId,
+                name: productName,
+                price: productPrice,
+                quantity: 1
+            });
+        }
+
+        // Save updated cart to localStorage
+        localStorage.setItem('lamirabellCart', JSON.stringify(cart));
+
+        // Show notification
+        showCartNotification(productName);
+
+        // Update cart count
+        updateCartCount();
+    }
+
+    // Show cart notification
+    function showCartNotification(productName) {
+        cartNotification.textContent = `${productName} added to cart!`;
+        cartNotification.classList.add('show');
+
+        setTimeout(() => {
+            cartNotification.classList.remove('show');
+        }, 3000);
+    }
+
+    // Update cart count
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('lamirabellCart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
+
+    // Smooth scrolling for category navigation on mobile
+    const categoryScroll = document.querySelector('.category-scroll');
+    let isScrolling = false;
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            if (window.innerWidth <= 768) {
+                this.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        });
+    });
+</script>

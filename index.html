@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamirabel - Premium Lingerie & Innerwear | Moonwhite DXB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #f4e6e7;
+            --secondary-pink: #e8d5d7;
+            --accent-rose: #d4a5a8;
+            --cream: #faf8f6;
+            --soft-white: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-light: #6b6b6b;
+            --gold-accent: #d4af37;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-hover: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--soft-white);
+            box-shadow: 0 2px 15px var(--shadow-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .navbar,
+        .nav-content {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            /* include padding in width */
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 150px;
+            /* adjust as needed */
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-rose);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-rose);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .cart-icon:hover {
+            color: var(--accent-rose);
+            transform: scale(1.1);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(244, 230, 231, 0.6), rgba(232, 213, 215, 0.6)),
+                url('Images/Logos/mirabel-logo.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
+        }
+
+        .cta-btn {
+            background: var(--text-dark);
+            color: white;
+            padding: 1.3rem 3rem;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-rose);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+
+        /* Featured Highlights */
+        .featured-highlights {
+            padding: 7rem 0;
+            background: var(--soft-white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+            color: var(--text-dark);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            font-weight: 600;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .highlight-card {
+            background: var(--cream);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .highlight-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 25px 50px var(--shadow-hover);
+        }
+
+        .highlight-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .highlight-card:hover .highlight-image {
+            transform: scale(1.08);
+        }
+
+        .highlight-info {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .highlight-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .highlight-info p {
+            color: var(--text-light);
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .highlight-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-rose);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Brand Values */
+        .brand-values {
+            padding: 7rem 0;
+            background: var(--primary-pink);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .value-item {
+            background: var(--soft-white);
+            padding: 3.5rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px var(--shadow-light);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .value-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .value-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px var(--shadow-medium);
+        }
+
+        .value-icon {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, var(--accent-rose), var(--secondary-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.8rem;
+            color: white;
+            transition: transform 0.4s ease;
+        }
+
+        .value-item:hover .value-icon {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .value-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .value-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Category Showcase */
+        .category-showcase {
+            padding: 7rem 0;
+            background: var(--soft-white);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .category-card {
+            background: var(--cream);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .category-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 45px var(--shadow-medium);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .category-image {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Story Teaser */
+        .story-teaser {
+            padding: 7rem 0;
+            background: var(--secondary-pink);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-text {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .story-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .story-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .story-text p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .story-btn {
+            background: transparent;
+            color: var(--accent-rose);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--accent-rose);
+            border-radius: 35px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .story-btn:hover {
+            background: var(--accent-rose);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-medium);
+        }
+
+        .story-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .story-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 0;
+            background: var(--soft-white);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .newsletter-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .newsletter h2 {
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .newsletter p {
+            font-size: 1.3rem;
+            margin-bottom: 3.5rem;
+            color: var(--text-light);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 550px;
+            margin: 0 auto;
+            gap: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1.4rem 1.8rem;
+            border: 2px solid var(--secondary-pink);
+            border-radius: 35px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background: var(--cream);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent-rose);
+            box-shadow: 0 0 0 3px rgba(212, 165, 168, 0.1);
+        }
+
+        .newsletter-btn {
+            background: var(--text-dark);
+            color: white;
+            padding: 1.4rem 2.8rem;
+            border: none;
+            border-radius: 35px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--accent-rose);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-medium);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-pink);
+            font-weight: 700;
+        }
+
+        .footer-brand p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-rose);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            font-size: 1.3rem;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-pink);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-medium);
+        }
+
+        .footer-section h4 {
+            margin-bottom: 2rem;
+            color: var(--primary-pink);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 1rem;
+        }
+
+        .developer-credit {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 1rem;
+        }
+
+        .developer-credit a {
+            color: var(--accent-rose);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .developer-credit a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                overflow-x: hidden;
+                display: none;
+                position: fixed;
+                top: 100%;
+                right: -100px;
+                height: 100vh;
+                max-width: 90%;
+                background: var(--soft-white);
+                flex-direction: column;
+                gap: 1rem;
+                padding: 4rem 1rem;
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                box-shadow: 0 5px 15px var(--shadow-light);
+            }
+
+            .nav-menu.active {
+                right: 0;
+                display: flex;
+            }
+
+            .values-grid {
+                grid-template-columns:1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .story-text h2 {
+                font-size: 2.8rem;
+            }
+
+            .newsletter h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .story-text h2 {
+                font-size: 2.2rem;
+            }
+
+            .newsletter h2 {
+                font-size: 2.2rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .value-item {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .highlight-info {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<!-- 
+<img src="images/Logos/log.png" alt="">
+-->
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <img src="Images/Logos/log.png" alt="La Mirabel Logo" />
+                </a>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="cart.html">🛒</a></li>
+                </ul>
+                <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Elegance. Comfort. Confidence.</h1>
+            <p>Discover the finest collection of premium lingerie and innerwear, crafted for the modern woman who values
+                sophistication and comfort.</p>
+            <a href="#shop" class="cta-btn">Shop Now</a>
+        </div>
+    </section>
+<!-- Featured Highlights -->
+<section class="featured-highlights">
+    <div class="container">
+        <h2 class="section-title">Featured Collection</h2>
+
+        <div class="highlights-grid">
+
+            <!-- Featured Product 1 -->
+            <div class="highlight-card">
+                <img src="Images/products/LM1501/01-a.jpeg" alt="LM1501 - Bra" class="highlight-image">
+                <div class="highlight-info">
+                    <h3>312 - Bra</h3>
+                    <p>Lamirabel Code: LM1501</p>
+                    <p class="highlight-description">Comfort-focused design with premium fabric and supportive structure suitable for everyday wear.</p>
+                    <div class="highlight-price">₹0</div>
+                </div>
+            </div>
+
+            <!-- Featured Product 2 -->
+            <div class="highlight-card">
+                <img src="Images/products/5218/01.jpeg" alt="5218 - Vest" class="highlight-image">
+                <div class="highlight-info">
+                    <h3>5218 - Vest</h3>
+                    <p>Lamirabel Code: no M Code</p>
+                    <p class="highlight-description">Soft, breathable vest designed for all-day comfort and versatile styling.</p>
+                    <div class="highlight-price">₹0</div>
+                </div>
+            </div>
+
+            <!-- Featured Product 3 -->
+            <div class="highlight-card">
+                <img src="Images/products/LM1504/01.jpg" alt="LM1503 - Bra" class="highlight-image">
+                <div class="highlight-info">
+                    <h3>717 - Bra</h3>
+                    <p>Lamirabel Code: LM1503</p>
+                    <p class="highlight-description">Classic everyday bra offering reliable support and a smooth, natural silhouette.</p>
+                    <div class="highlight-price">₹0</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Brand Values -->
+    <section class="brand-values">
+        <div class="container">
+            <h2 class="section-title">Why Choose Lamirabel</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🏗️</div>
+                    <h3>Well-Constructed</h3>
+                    <p>Meticulously crafted with attention to every detail, ensuring lasting quality and perfect fit.
+                    </p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🛡️</div>
+                    <h3>Anti-Microbial</h3>
+                    <p>Advanced fabric technology for freshness and hygiene, keeping you comfortable all day long.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">📏</div>
+                    <h3>Inclusive Sizes</h3>
+                    <p>Celebrating every body with our comprehensive size range, designed for all beautiful women.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">✨</div>
+                    <h3>Crafted for Comfort</h3>
+                    <p>Premium materials and ergonomic design ensure you feel as good as you look throughout your day.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Showcase -->
+<section class="category-showcase">
+    <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+
+        <div class="categories-grid">
+
+            <!-- Bra -->
+            <div class="category-card" data-category="Bra">
+                <img src="Images/Products/LM1506/01.jpg" alt="Bra" class="category-image">
+                <div class="category-info">
+                    <h3>Bra</h3>
+                </div>
+            </div>
+
+            <!-- Underpants -->
+            <div class="category-card" data-category="Underpants">
+                <img src="Images/Products/281/01.png" alt="Underpants" class="category-image">
+                <div class="category-info">
+                    <h3>Underpants</h3>
+                </div>
+            </div>
+
+            <!-- Kids -->
+            <div class="category-card" data-category="Kids">
+                <img src="Images/Products/6857/02.jpg" alt="Kids" class="category-image">
+                <div class="category-info">
+                    <h3>Kids</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Story Teaser -->
+    <section class="story-teaser">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Heritage</h2>
+                    <p>Part of Moonwhite DXB, Lamirabel blends timeless elegance with modern comfort. Our journey began
+                        with a vision to create intimate wear that honors every woman's unique beauty and celebrates the
+                        essence of femininity.</p>
+                    <a href="about.html" class="story-btn">Read Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Lamirabel</h3>
+                    <p>Premium lingerie and innerwear celebrating the beauty and strength of every woman. Part of the
+                        Moonwhite DXB legacy of excellence and craftsmanship.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">📌</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#product">Product</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Lamirabel - Moonwhite DXB. All rights reserved.</p>
+                <div class="developer-credit">
+                    <p>Developed by <a href="https://www.sreyas.tech" target="_blank">Sreyas</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll(
+                '.section-title, .highlight-card, .value-item, .category-card, .story-text, .story-image, .newsletter-content'
+            );
+
+            animatedElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            if (email) {
+                alert('Thank you for subscribing! Welcome to the Lamirabel family.');
+                this.querySelector('.newsletter-input').value = '';
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(15px)';
+            } else {
+                navbar.style.background = 'var(--soft-white)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
